@@ -53,36 +53,27 @@
             border-radius: 5px;
         }
 
-        /* Header Section with Parallax Effect */
+        /* Header Section with Parallax */
         .header {
-            background: url('your-header-image.jpg') no-repeat center center/cover;
+            background: url('your-photo.jpg') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             color: white;
-            position: relative;
             text-align: center;
+            position: relative;
             background-attachment: fixed;
         }
 
-        .profile-photo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .typing-text {
-            font-size: 2.5rem;
-            font-weight: bold;
-            overflow: hidden;
+        .header h1 {
+            font-size: 2.8rem;
             white-space: nowrap;
-            border-right: 3px solid white;
+            overflow: hidden;
+            border-right: 4px solid white;
             width: 0;
-            animation: typing 3s steps(40) forwards, blink 0.8s infinite;
+            animation: typing 4s steps(40, end) forwards, blink 1s infinite;
         }
 
         @keyframes typing {
@@ -94,75 +85,124 @@
             50% { border-color: transparent; }
         }
 
-        /* Portfolio Section */
-        #portfolio {
-            background: #e6e6e6;
+        /* Sections */
+        section {
             padding: 100px 20px;
+            margin-top: 50px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
         .portfolio-item {
-            display: inline-block;
-            margin: 20px;
-            padding: 20px;
+            width: 300px;
             background: white;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
             border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s;
         }
 
         .portfolio-item:hover {
             transform: scale(1.1);
         }
 
-        /* Contact Links */
-        .contact-links a {
-            margin: 10px;
-            color: #333;
-            font-size: 24px;
-            transition: color 0.3s;
+        /* Hobbies Section */
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
 
-        .contact-links a:hover {
-            color: #0073b1;
+        .hobby-item {
+            width: 200px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
+
+    <!-- Navigation Bar -->
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About Me</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <div class="header" id="home">
-        <img src="your-profile-photo.jpg" alt="Your Photo" class="profile-photo">
-        <h1 class="typing-text">Welcome to My Website</h1>
-        <p>Discover my world and passions.</p>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Welcome to My Website</h1>
     </div>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I am <strong>Your Name</strong>. I love <strong>Your Interests</strong>. Here’s a little about me.</p>
-    </section>
-
+    <!-- Portfolio Section -->
     <section id="portfolio">
-        <h2>My Portfolio</h2>
-        <div class="portfolio-item">Project 1</div>
-        <div class="portfolio-item">Project 2</div>
-        <div class="portfolio-item">Project 3</div>
+        <h2>Portfolio</h2>
+        <div class="portfolio">
+            <div class="portfolio-item">Project 1</div>
+            <div class="portfolio-item">Project 2</div>
+        </div>
     </section>
 
+    <!-- Hobbies Section -->
+    <section id="hobbies">
+        <h2>My Hobbies</h2>
+        <div class="hobbies">
+            <div class="hobby-item">Photography <img src="hobby-photo.jpg" width="100%"></div>
+            <div class="hobby-item">Gaming <img src="hobby-photo.jpg" width="100%"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
         <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <div class="contact-links">
-            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-            <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
-            <a href="https://www.instagram.com/yourinstagram" target="_blank">Instagram</a>
-        </div>
+        <p>Social: <a href="#">LinkedIn</a> | <a href="#">GitHub</a> | <a href="#">Instagram</a></p>
     </section>
+
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function revealSections() {
+            document.querySelectorAll("section").forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        }
+        window.addEventListener("scroll", revealSections);
+        revealSections();
+    </script>
+
 </body>
 </html>
