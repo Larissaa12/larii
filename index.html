@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>My Personal Website</title>
     <style>
         /* General Styles */
         body {
@@ -13,33 +13,75 @@
             text-align: center;
             background-color: #f4f4f4;
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
 
-        /* Parallax Header */
+        /* Navigation Bar */
+        nav {
+            background: #333;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #555;
+            border-radius: 5px;
+        }
+
+        /* Header Section with Parallax Effect */
         .header {
-            position: relative;
+            background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
             height: 100vh;
-            background: url('https://via.placeholder.com/1500x800') no-repeat center center/cover;
-            background-attachment: fixed; /* Parallax Effect */
+            color: white;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-            text-align: center;
+            justify-content: center;
+            position: relative;
+            background-attachment: fixed;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         /* Typing Animation */
         .typing-text {
             font-size: 2.5rem;
-            font-weight: bold;
             white-space: nowrap;
             overflow: hidden;
-            border-right: 3px solid white;
+            border-right: 2px solid white;
             width: 0;
-            animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+            animation: typing 3s steps(30) forwards, blink 0.7s infinite;
         }
 
         @keyframes typing {
@@ -51,120 +93,84 @@
             50% { border-color: transparent; }
         }
 
-        /* Navigation */
-        nav {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 15px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            text-align: center;
-            z-index: 1000;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
-        nav ul li {
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #f39c12;
+        /* Sections */
+        section {
+            padding: 100px 20px;
+            margin-top: 50px;
         }
 
         /* Portfolio Section */
-        .portfolio-container {
+        .portfolio {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-top: 50px;
         }
+
         .portfolio-item {
-            background: white;
-            padding: 20px;
             width: 250px;
+            height: 150px;
+            background: #444;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 10px;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease-in-out;
         }
+
         .portfolio-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            transform: scale(1.1);
         }
 
         /* Animated Buttons */
         .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #f39c12;
+            background: #ff6600;
             color: white;
-            border-radius: 5px;
+            padding: 10px 20px;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.3s, background 0.3s;
+            border-radius: 5px;
+            transition: transform 0.3s;
         }
+
         .btn:hover {
-            background: #e67e22;
             transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-
-    <!-- Navigation Bar -->
     <nav>
         <ul>
+            <li><a href="#home">Home</a></li>
             <li><a href="#about">About Me</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <!-- Header with Parallax and Typing Animation -->
-    <div class="header">
-        <h1 class="typing-text">Welcome to My Portfolio</h1>
-        <p>Explore my projects and work</p>
+    <div class="header" id="home">
+        <img src="https://via.placeholder.com/160" alt="Your Photo" class="profile-photo">
+        <h1 class="typing-text">Welcome to My Website</h1>
     </div>
 
-    <!-- Portfolio Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I am [Your Name]. I love [Your Interests].</p>
+    </section>
+
     <section id="portfolio">
-        <h2>Portfolio</h2>
-        <div class="portfolio-container">
-            <div class="portfolio-item">
-                <h3>Project 1</h3>
-                <p>Description of project 1.</p>
-                <a href="#" class="btn">View More</a>
-            </div>
-            <div class="portfolio-item">
-                <h3>Project 2</h3>
-                <p>Description of project 2.</p>
-                <a href="#" class="btn">View More</a>
-            </div>
-            <div class="portfolio-item">
-                <h3>Project 3</h3>
-                <p>Description of project 3.</p>
-                <a href="#" class="btn">View More</a>
-            </div>
+        <h2>My Portfolio</h2>
+        <div class="portfolio">
+            <div class="portfolio-item">Project 1</div>
+            <div class="portfolio-item">Project 2</div>
+            <div class="portfolio-item">Project 3</div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>Email: your.email@example.com</p>
-        <p>Follow me on <a href="#">Social Media</a></p>
+        <a href="mailto:your.email@example.com" class="btn">Email Me</a>
     </section>
-
 </body>
 </html>
