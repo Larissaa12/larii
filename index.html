@@ -9,33 +9,54 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #ff7e5f, #feb47b);
-            color: #fff;
+            background: #f5f5dc;
+            color: #2a6041;
+            transition: background 0.5s, color 0.5s;
+        }
+        .dark-mode {
+            background: #2a6041;
+            color: #f5f5dc;
         }
         header {
-            background: linear-gradient(to right, #4facfe, #00f2fe);
+            background: #2a6041;
             padding: 20px;
             text-align: center;
+            color: #f5f5dc;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
         nav ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            justify-content: center;
         }
         nav ul li {
-            display: inline;
             margin: 0 15px;
         }
         nav ul li a {
-            color: #fff;
+            color: #f5f5dc;
             text-decoration: none;
             font-weight: bold;
         }
         section {
-            padding: 50px;
+            padding: 80px 50px;
             text-align: center;
         }
-        .intro {
-            font-size: 24px;
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+        .about-container img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #2a6041;
         }
         .gallery {
             display: flex;
@@ -46,32 +67,26 @@
             width: 200px;
             height: 150px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
         }
-        form {
-            max-width: 400px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.2);
+        .testimonial {
+            background: rgba(42, 96, 65, 0.2);
             padding: 20px;
             border-radius: 10px;
         }
-        input, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-        }
         button {
-            background: #4facfe;
-            color: #fff;
-            font-size: 16px;
+            background: #2a6041;
+            color: #f5f5dc;
+            padding: 10px;
+            border: none;
             cursor: pointer;
+            margin-top: 10px;
         }
         footer {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(to right, #4facfe, #00f2fe);
+            background: #2a6041;
+            color: #f5f5dc;
         }
     </style>
 </head>
@@ -85,31 +100,42 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <button onclick="toggleDarkMode()">Toggle Dark/Light Mode</button>
     </header>
     
     <section id="home">
-        <div class="intro">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Hi, I'm Larissa Dabreo, a creative explorer passionate about capturing moments and crafting stories.</p>
-        </div>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Hi, I'm Larissa Dabreo, a creative explorer passionate about capturing moments and crafting stories.</p>
+        <a href="resume.pdf" download><button>Download Resume</button></a>
     </section>
     
     <section id="about">
         <h2>About Me</h2>
-        <p>I'm Larissa Dabreo, a student with a deep love for photography, videography, cooking, and storytelling. Whether I'm capturing stunning visuals, experimenting with new recipes, or immersing myself in the magic of movies, I'm always exploring and creating. My curiosity drives me to seek out new places, experiences, and perspectives, constantly fueling my creative journey.</p>
+        <div class="about-container">
+            <img src="your-photo.jpg" alt="Larissa Dabreo">
+            <p>I'm Larissa Dabreo, a student with a deep love for photography, videography, cooking, and storytelling.</p>
+        </div>
     </section>
     
     <section id="portfolio">
         <h2>My Work</h2>
         <div class="gallery">
             <div class="project">
-                <img src="project1.jpg" alt="Project 1">
+                <img src="project1.jpg" alt="Project 1" onclick="openLightbox('project1.jpg')">
                 <p>Project 1 Description</p>
             </div>
             <div class="project">
-                <img src="project2.jpg" alt="Project 2">
+                <img src="project2.jpg" alt="Project 2" onclick="openLightbox('project2.jpg')">
                 <p>Project 2 Description</p>
             </div>
+        </div>
+    </section>
+    
+    <section id="testimonials">
+        <h2>What People Say</h2>
+        <div class="testimonial">
+            <p>"Larissa is an amazing photographer with a great eye for detail!"</p>
+            <p>- Happy Client</p>
         </div>
     </section>
     
@@ -123,8 +149,35 @@
         </form>
     </section>
     
+    <section id="map">
+        <h2>Find Me</h2>
+        <iframe src="https://www.google.com/maps/embed?YOUR_GOOGLE_MAPS_LINK" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+    
     <footer>
         <p>© 2025 Larissa Dabreo. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+        function openLightbox(imageSrc) {
+            let lightbox = document.createElement('div');
+            lightbox.style.position = 'fixed';
+            lightbox.style.top = '0';
+            lightbox.style.left = '0';
+            lightbox.style.width = '100%';
+            lightbox.style.height = '100%';
+            lightbox.style.background = 'rgba(0,0,0,0.8)';
+            lightbox.style.display = 'flex';
+            lightbox.style.alignItems = 'center';
+            lightbox.style.justifyContent = 'center';
+            lightbox.innerHTML = `<img src="${imageSrc}" style="max-width:90%; max-height:90%; border-radius:10px;">`;
+            lightbox.onclick = () => document.body.removeChild(lightbox);
+            document.body.appendChild(lightbox);
+        }
+    </script>
 </body>
 </html>
+
