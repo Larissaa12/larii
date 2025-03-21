@@ -55,14 +55,15 @@
 
         /* Header Section with Parallax Effect */
         .header {
-            background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
+            background: url('your-header-image.jpg') no-repeat center center/cover;
             height: 100vh;
-            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            color: white;
             position: relative;
+            text-align: center;
             background-attachment: fixed;
         }
 
@@ -74,14 +75,14 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Typing Animation */
         .typing-text {
             font-size: 2.5rem;
-            white-space: nowrap;
+            font-weight: bold;
             overflow: hidden;
-            border-right: 2px solid white;
+            white-space: nowrap;
+            border-right: 3px solid white;
             width: 0;
-            animation: typing 3s steps(30) forwards, blink 0.7s infinite;
+            animation: typing 3s steps(40) forwards, blink 0.8s infinite;
         }
 
         @keyframes typing {
@@ -93,29 +94,19 @@
             50% { border-color: transparent; }
         }
 
-        /* Sections */
-        section {
-            padding: 100px 20px;
-            margin-top: 50px;
-        }
-
         /* Portfolio Section */
-        .portfolio {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        #portfolio {
+            background: #e6e6e6;
+            padding: 100px 20px;
         }
 
         .portfolio-item {
-            width: 250px;
-            height: 150px;
-            background: #444;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            background: white;
             border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out;
         }
 
@@ -123,19 +114,16 @@
             transform: scale(1.1);
         }
 
-        /* Animated Buttons */
-        .btn {
-            background: #ff6600;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: transform 0.3s;
+        /* Contact Links */
+        .contact-links a {
+            margin: 10px;
+            color: #333;
+            font-size: 24px;
+            transition: color 0.3s;
         }
 
-        .btn:hover {
-            transform: scale(1.1);
+        .contact-links a:hover {
+            color: #0073b1;
         }
     </style>
 </head>
@@ -150,27 +138,31 @@
     </nav>
 
     <div class="header" id="home">
-        <img src="https://via.placeholder.com/160" alt="Your Photo" class="profile-photo">
+        <img src="your-profile-photo.jpg" alt="Your Photo" class="profile-photo">
         <h1 class="typing-text">Welcome to My Website</h1>
+        <p>Discover my world and passions.</p>
     </div>
 
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello! I am [Your Name]. I love [Your Interests].</p>
+        <p>Hello! I am <strong>Your Name</strong>. I love <strong>Your Interests</strong>. Here’s a little about me.</p>
     </section>
 
     <section id="portfolio">
         <h2>My Portfolio</h2>
-        <div class="portfolio">
-            <div class="portfolio-item">Project 1</div>
-            <div class="portfolio-item">Project 2</div>
-            <div class="portfolio-item">Project 3</div>
-        </div>
+        <div class="portfolio-item">Project 1</div>
+        <div class="portfolio-item">Project 2</div>
+        <div class="portfolio-item">Project 3</div>
     </section>
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <a href="mailto:your.email@example.com" class="btn">Email Me</a>
+        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <div class="contact-links">
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+            <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
+            <a href="https://www.instagram.com/yourinstagram" target="_blank">Instagram</a>
+        </div>
     </section>
 </body>
 </html>
