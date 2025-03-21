@@ -18,7 +18,7 @@
         /* Navigation Bar */
         nav {
             background: #333;
-            padding: 10px;
+            padding: 15px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -53,6 +53,49 @@
             border-radius: 5px;
         }
 
+        /* Header Section */
+        .header {
+            background: url('https://via.placeholder.com/1500x600') no-repeat center center/cover;
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid white;
+            display: block;
+            margin: 20px auto;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.6);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin: 10px 0;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        .header p {
+            font-size: 1.4rem;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Sections */
         section {
             padding: 100px 20px;
@@ -67,7 +110,6 @@
             transform: translateY(0);
         }
 
-        #home { background: #e3e3e3; }
         #about { background: #cce7ff; }
         #gallery { background: #ffcccb; }
         #contact { background: #d4edda; }
@@ -141,11 +183,12 @@
         </ul>
     </nav>
 
-    <!-- Home Section -->
-    <section id="home">
+    <!-- Header Section -->
+    <div class="header">
+        <img src="https://via.placeholder.com/160" alt="Your Photo" class="profile-photo">
         <h1>Welcome to My Website</h1>
-        <p>This is a space to showcase my interests and personality.</p>
-    </section>
+        <p>Discover my world and passions.</p>
+    </div>
 
     <!-- About Me Section -->
     <section id="about">
@@ -158,8 +201,8 @@
         <h2>Gallery</h2>
         <p>Click an image to view it larger.</p>
         <div class="gallery-container">
-            <img src="ASUS.jpg" alt="Sample Image 1" onclick="openPopup('https://via.placeholder.com/600')">
-            <img src="ASUS.jpg" alt="Sample Image 2" onclick="openPopup('https://via.placeholder.com/600')">
+            <img src="https://via.placeholder.com/200" alt="Sample Image 1" onclick="openPopup('https://via.placeholder.com/600')">
+            <img src="https://via.placeholder.com/200" alt="Sample Image 2" onclick="openPopup('https://via.placeholder.com/600')">
         </div>
     </section>
 
@@ -196,9 +239,7 @@
         function revealSections() {
             const sections = document.querySelectorAll("section");
             sections.forEach(section => {
-                const position = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (position < windowHeight - 100) {
+                if (section.getBoundingClientRect().top < window.innerHeight - 100) {
                     section.classList.add("visible");
                 }
             });
