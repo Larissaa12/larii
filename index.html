@@ -11,6 +11,8 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            background-color: #f4f4f4;
+            scroll-behavior: smooth;
         }
 
         /* Navigation Bar */
@@ -21,39 +23,54 @@
             width: 100%;
             top: 0;
             left: 0;
+            z-index: 1000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            justify-content: center;
         }
+
         nav ul li {
-            display: inline;
-            margin: 0 15px;
+            margin: 0 20px;
         }
+
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
+            font-size: 18px;
+            padding: 10px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #555;
+            border-radius: 5px;
         }
 
         /* Sections */
         section {
             padding: 100px 20px;
             margin-top: 50px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-in-out;
         }
-        #home {
-            background: #f4f4f4;
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        #about {
-            background: #ddd;
-        }
-        #gallery {
-            background: #ccc;
-        }
-        #contact {
-            background: #bbb;
-        }
+
+        #home { background: #e3e3e3; }
+        #about { background: #cce7ff; }
+        #gallery { background: #ffcccb; }
+        #contact { background: #d4edda; }
 
         /* Gallery */
         .gallery-container {
@@ -62,10 +79,53 @@
             gap: 20px;
             flex-wrap: wrap;
         }
+
         .gallery-container img {
             width: 200px;
             height: auto;
             border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Popup Gallery */
+        .popup {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .popup img {
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .popup span {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -90,24 +150,63 @@
     <!-- About Me Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello! I am [Your Name]. I love [Your Interests]. Here’s a little about me.</p>
+        <p>Hello! I am <strong>[Your Name]</strong>. I love <strong>[Your Interests]</strong>. Here’s a little about me.</p>
     </section>
 
     <!-- Gallery Section -->
     <section id="gallery">
         <h2>Gallery</h2>
+        <p>Click an image to view it larger.</p>
         <div class="gallery-container">
-            <img src="https://via.placeholder.com/200" alt="Sample Image 1">
-            <img src="https://via.placeholder.com/200" alt="Sample Image 2">
+            <img src="https://via.placeholder.com/200" alt="Sample Image 1" onclick="openPopup('https://via.placeholder.com/600')">
+            <img src="https://via.placeholder.com/200" alt="Sample Image 2" onclick="openPopup('https://via.placeholder.com/600')">
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>Email: your.email@example.com</p>
+        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
         <p>Follow me on <a href="#">Social Media</a></p>
     </section>
+
+    <!-- Popup Container -->
+    <div id="popup" class="popup">
+        <span onclick="closePopup()">&times;</span>
+        <img id="popup-img">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Popup & Animations -->
+    <script>
+        function openPopup(imgSrc) {
+            document.getElementById("popup-img").src = imgSrc;
+            document.getElementById("popup").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        // Reveal sections on scroll
+        function revealSections() {
+            const sections = document.querySelectorAll("section");
+            sections.forEach(section => {
+                const position = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (position < windowHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealSections);
+        revealSections();
+    </script>
 
 </body>
 </html>
