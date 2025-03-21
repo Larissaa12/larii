@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>My Portfolio Website</title>
     <style>
         /* General Styles */
         body, html {
@@ -12,6 +12,7 @@
             font-family: Arial, sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            background-color: #f4f4f4;
         }
 
         /* Parallax Header */
@@ -24,7 +25,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: navy blue;
+            color: white;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
@@ -72,6 +73,10 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #f39c12;
         }
 
         /* Sections */
@@ -80,8 +85,29 @@
             text-align: center;
         }
         #about { background: #f4f4f4; }
-        #gallery { background: #ddd; }
+        #portfolio { background: #ddd; }
+        #gallery { background: #ccc; }
         #contact { background: #bbb; }
+
+        /* Portfolio */
+        .portfolio-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .portfolio-item {
+            background: white;
+            padding: 20px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+        }
 
         /* Gallery */
         .gallery-container {
@@ -99,6 +125,22 @@
         .gallery-container img:hover {
             transform: scale(1.1);
         }
+
+        /* Animated Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f39c12;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+        }
+        .btn:hover {
+            background: #e67e22;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -107,6 +149,7 @@
     <nav>
         <ul>
             <li><a href="#about">About Me</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -114,14 +157,36 @@
 
     <!-- Header with Parallax and Typing Animation -->
     <div class="header">
-        <h1 class="typing-text">Welcome to My Website</h1>
-        <p>Discover my world</p>
+        <h1 class="typing-text">Welcome to My Portfolio</h1>
+        <p>Explore my projects and work</p>
     </div>
 
     <!-- About Me Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>Hello! I am [Your Name]. I love [Your Interests]. Here’s a little about me.</p>
+        <p>Hello! I am [Your Name]. I am passionate about [Your Interests].</p>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-item">
+                <h3>Project 1</h3>
+                <p>Description of project 1.</p>
+                <a href="#" class="btn">View More</a>
+            </div>
+            <div class="portfolio-item">
+                <h3>Project 2</h3>
+                <p>Description of project 2.</p>
+                <a href="#" class="btn">View More</a>
+            </div>
+            <div class="portfolio-item">
+                <h3>Project 3</h3>
+                <p>Description of project 3.</p>
+                <a href="#" class="btn">View More</a>
+            </div>
+        </div>
     </section>
 
     <!-- Gallery Section -->
