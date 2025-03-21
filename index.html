@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio Website</title>
+    <title>My Portfolio</title>
     <style>
         /* General Styles */
-        body, html {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
             scroll-behavior: smooth;
             overflow-x: hidden;
-            background-color: #f4f4f4;
         }
 
         /* Parallax Header */
@@ -59,14 +60,16 @@
             top: 0;
             left: 0;
             text-align: center;
+            z-index: 1000;
         }
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            justify-content: center;
         }
         nav ul li {
-            display: inline;
             margin: 0 15px;
         }
         nav ul li a {
@@ -79,22 +82,13 @@
             color: #f39c12;
         }
 
-        /* Sections */
-        section {
-            padding: 100px 20px;
-            text-align: center;
-        }
-        #about { background: #f4f4f4; }
-        #portfolio { background: #ddd; }
-        #gallery { background: #ccc; }
-        #contact { background: #bbb; }
-
-        /* Portfolio */
+        /* Portfolio Section */
         .portfolio-container {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 50px;
         }
         .portfolio-item {
             background: white;
@@ -107,23 +101,6 @@
         .portfolio-item:hover {
             transform: scale(1.05);
             box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Gallery */
-        .gallery-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .gallery-container img {
-            width: 200px;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        .gallery-container img:hover {
-            transform: scale(1.1);
         }
 
         /* Animated Buttons */
@@ -150,7 +127,6 @@
         <ul>
             <li><a href="#about">About Me</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#gallery">Gallery</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -160,12 +136,6 @@
         <h1 class="typing-text">Welcome to My Portfolio</h1>
         <p>Explore my projects and work</p>
     </div>
-
-    <!-- About Me Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Hello! I am [Your Name]. I am passionate about [Your Interests].</p>
-    </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio">
@@ -186,15 +156,6 @@
                 <p>Description of project 3.</p>
                 <a href="#" class="btn">View More</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery">
-        <h2>Gallery</h2>
-        <div class="gallery-container">
-            <img src="https://via.placeholder.com/200" alt="Sample Image 1">
-            <img src="https://via.placeholder.com/200" alt="Sample Image 2">
         </div>
     </section>
 
