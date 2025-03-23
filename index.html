@@ -9,11 +9,6 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #F5F5DC;
-            color: #2A6041;
-            transition: background 0.5s, color 0.5s;
-        }
-        .dark-mode {
             background: #2A6041;
             color: #F5F5DC;
         }
@@ -44,6 +39,12 @@
         section {
             padding: 80px 50px;
             text-align: center;
+        }
+        .home {
+            position: relative;
+            background: url('background-pattern.jpg') no-repeat center center/cover;
+            color: #F5F5DC;
+            padding: 150px 50px;
         }
         .about-container {
             display: flex;
@@ -112,19 +113,19 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <button onclick="toggleDarkMode()">Toggle Dark/Light Mode</button>
     </header>
     
-    <section id="home">
+    <section id="home" class="home">
         <h1>Welcome to My Portfolio</h1>
-        <p>Hi, I'm Larissa Dabreo, a creative explorer passionate about capturing moments, crafting stories, and developing innovative solutions through technology. As a Computer Engineering student, I enjoy blending creativity with problem-solving to build impactful digital experiences.</p>
+        <p>Hi, I'm Larissa Dabreo, a creative explorer passionate about capturing moments, crafting stories, and developing innovative solutions through technology.</p>
+        <p><em>"Believe in yourself! Have faith in your abilities!"</em></p>
     </section>
     
     <section id="about">
         <h2>About Me</h2>
         <div class="about-container">
             <img src="your-photo.jpg" alt="Larissa Dabreo">
-            <p>I'm Larissa Dabreo, a Computer Engineering student at Fr. Conceicao Rodrigues College of Engineering. I love photography, videography, cooking, swimming, and watching sunsets. "Believe in yourself! Have faith in your abilities!"</p>
+            <p>I'm Larissa Dabreo, a Computer Engineering student at Fr. Conceicao Rodrigues College of Engineering. I love photography, videography, cooking, swimming, and watching sunsets.</p>
         </div>
     </section>
     
@@ -166,11 +167,5 @@
     <footer>
         <p>© 2025 Larissa Dabreo. All rights reserved.</p>
     </footer>
-
-    <script>
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-        }
-    </script>
 </body>
 </html>
