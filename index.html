@@ -6,11 +6,11 @@
     <title>Personal Portfolio - Larissa Dabreo</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background: #2A6041;
-            color: #F5F5DC;
+            background: #F5F5DC;
+            color: #2A6041;
         }
         header {
             background: linear-gradient(135deg, #2A6041, #A3C6A8);
@@ -41,10 +41,26 @@
             text-align: center;
         }
         .home {
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             background: url('background-pattern.jpg') no-repeat center center/cover;
             color: #F5F5DC;
-            padding: 150px 50px;
+            text-align: center;
+        }
+        .home h1 {
+            font-size: 3em;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .home p {
+            font-size: 1.2em;
+            max-width: 600px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .about-container {
             display: flex;
@@ -53,46 +69,35 @@
             gap: 20px;
         }
         .about-container img {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border-radius: 15px;
             border: 4px solid #C2A878;
         }
-        .photo-story {
+        .photo-story, .skills-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 15px;
         }
-        .photo-story img {
+        .photo-story img, .skills-container div {
             width: 250px;
             height: 250px;
             object-fit: cover;
             border-radius: 15px;
             border: 3px solid #C2A878;
+            transition: transform 0.3s ease;
         }
-        .things-i-love {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
+        .photo-story img:hover, .skills-container div:hover {
+            transform: scale(1.05);
         }
-        .things-i-love div {
+        .skills-container div {
             background: #A3C6A8;
             color: #2A6041;
-            padding: 10px 20px;
+            padding: 15px 25px;
             border-radius: 10px;
             font-weight: bold;
-        }
-        button {
-            background: #C2A878;
-            color: #FFF7E6;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-            border-radius: 5px;
         }
         footer {
             text-align: center;
@@ -109,7 +114,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#photos">Photo Story</a></li>
-                <li><a href="#things-i-love">Things I Love</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -141,16 +146,13 @@
         </div>
     </section>
     
-    <section id="things-i-love">
-        <h2>Things I Love</h2>
-        <div class="things-i-love">
-            <div>📷 Photography</div>
-            <div>🎥 Videography</div>
-            <div>🍳 Cooking</div>
-            <div>🎬 Crime & Suspense Movies</div>
-            <div>🌍 Exploring New Places</div>
-            <div>🏊‍♀️ Swimming</div>
-            <div>🌅 Watching Sunsets</div>
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <div>💻 Programming (C++, Python, HTML, CSS)</div>
+            <div>📷 Photography & Videography Editing</div>
+            <div>🎨 UI/UX & Web Design</div>
+            <div>🛠 Problem-Solving & Logical Thinking</div>
         </div>
     </section>
     
